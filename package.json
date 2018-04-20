@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/AlekseiiKanaiev/test-project_1/issues"
   },
-  "homepage": "https://github.com/AlekseiiKanaiev/test-project_1#readme"
+  "homepage": "https://github.com/AlekseiiKanaiev/test-project_1#readme",
+  "devDependencies": {
+    "mocha": "^5.1.1"
+  },
+  "dependencies": {
+    "bootstrap": "^4.1.0"
+  }
 }
