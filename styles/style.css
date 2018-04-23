@@ -1,0 +1,19 @@
+.book-author ul, .book-price ul, .book-info ul, .book-name ul{
+    margin: auto;
+    width: fit-content;
+}
+.no-dots li{
+    list-style: none;
+}
+li{
+    margin-top: 10px;
+}
+.btn{
+    margin-top: 5px;
+    width: fit-content;
+}
+img{
+    display: grid;
+    margin: auto;
+    margin-bottom: 10px;
+}
