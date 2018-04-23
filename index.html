@@ -9,14 +9,61 @@
 <body>
     <h1>Hello, World!</h1>
     <p>More text</p>
-    <ul>
-        <li>Harry Potter</li>
-        <li>Lord of the Rings</li>
-        <li>Alice in wonderland</li>
-    </ul>
+    <div class="container list-of-books">
+        <div class="row">
+            <div class="col">
+                <div class="book-name">
+                    <ul>
+                        <h4>Name</h4>
+                        <li>Harry Potter</li>
+                        <li>Lord of the Rings</li>
+                        <li>Alice in wonderland</li>
+                    </ul>
+                    
+                </div>
+            </div>
+            <div class="col">
+                <div class="book-author">
+                    <ul class="no-dots">
+                        <h4>Author</h4>
+                        <li>Joanne K. Rowling</li>
+                        <li>J. R. R. Tolkien</li>
+                        <li>Lewis Carroll</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class="book-price">
+                    <ul class="no-dots">
+                        <h4>Price</h4>
+                        <li>1$</li>
+                        <li>2$</li>
+                        <li>3$</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- <div class="col">
+                <div class="book-info">
+                    <ul class="no-dots">
+                        <li>
+                            <button class="btn btn-info btn-sm" style="margin: auto;">View details</button>
+                        </li>
+                        <li>
+                            <button class="btn btn-info btn-sm" style="margin: auto;">View details</button>
+                        </li>
+                        <li>
+                            <button class="btn btn-info btn-sm" style="margin: auto;">View details</button>
+                        </li>
+                    </ul>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    
 
 
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="./style.css" type="text/css"/>
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
