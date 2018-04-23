@@ -1,3 +1,6 @@
+body h1{
+    text-align: center;
+}
 .book-author ul, .book-price ul, .book-info ul, .book-name ul{
     margin: auto;
     width: fit-content;
