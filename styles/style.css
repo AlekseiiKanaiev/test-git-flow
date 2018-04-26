@@ -19,4 +19,5 @@ img{
     display: grid;
     margin: auto;
     margin-bottom: 10px;
+    max-width: 450px;
 }
