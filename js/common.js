@@ -4,10 +4,11 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById('my-form').addEventListener("submit", function(event){
         event.preventDefault();
         var query = document.getElementById("book_search").value;
-        var alertInfo = "Please, enter name of a book";
+        var alertInfo = '<div class="alert alert-warning" role="alert">'+
+                        'Please, enter name of the book!</div>';
         if (!query){
-            
-            alert(alertInfo);
+            document.getElementById('search-form').innerHTML += alertInfo;
+            // alert(alertInfo);
             return -1;
         }
         var url = `https://www.googleapis.com/books/v1/volumes?q=intitle:${query}`;
@@ -52,7 +53,8 @@ document.addEventListener("DOMContentLoaded", function(){
         })
         .catch(function(err){
             console.log("Err: "+err);
-            alert(err);
+            alertInfo = `<div class="alert alert-danger" role="alert">${err}!</div>`;
+            document.getElementById('search-form').innerHTML += alertInfo;
         })
     })
 })
