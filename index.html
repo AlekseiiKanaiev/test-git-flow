@@ -10,7 +10,32 @@
     <h1>Hello, World!</h1>
     <p>More text</p>
     <div class="container list-of-books">
-        <div class="row d-flex align-items-end">
+        <div class="row d-flex justify-content-center">
+            <form action="" id="my-form">
+                <input type="text" name="book_search">
+                <button type="submit" id="btn-submit">Search</button>
+            </form>
+            <div id="content"></div>
+            <div class="modal fade" id="bookinfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">BookTitle</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            BookInfo
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row d-flex align-items-end">
             <div class="col">
                 <div class="book-name">
                     <ul>
@@ -48,25 +73,8 @@
                     <button class="btn btn-info btn-sm" id = "book_3" type="button" data-toggle="modal" data-target="#bookinfo" data-book = "Alice in wonderland">View details</button>
                 </div>
             </div>
-            <div class="modal fade" id="bookinfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">BookTitle</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            BookInfo
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+        </div> -->
     </div>
     
 
