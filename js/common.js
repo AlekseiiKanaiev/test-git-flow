@@ -1,7 +1,6 @@
-window.onload = function(){
-    
+window.onload = ()=>{
     // var apiKey = "AIzaSyC5mcWMqSMxtaecdQx-wsq6cgoZSKqZd0I"
-    document.getElementById('btn-search').addEventListener('click', function(){
+    document.getElementById('btn-search').addEventListener('click', ()=>{
         // event.preventDefault();
         removeAlert();
         let query = document.getElementById('book_search').value;
@@ -12,10 +11,9 @@ window.onload = function(){
             console.log("no query");
         }
         else{
-            
             console.log(query);
             const url = `https://www.googleapis.com/books/v1/volumes?q=intitle:${query}`;
-            getJSONBooks(url).then(function(result){
+            getJSONBooks(url).then((result)=>{
                 let items = result.items;
                 let content = '<div class = "row">';
                 content += '<div class="col-md-4"><h4>Name</h4></div>'+
@@ -35,7 +33,7 @@ window.onload = function(){
                 }   
                 document.getElementById('content').innerHTML = content;
 
-                $('.modal').on('show.bs.modal', function (event) {
+                $('.modal').on('show.bs.modal', (event)=>{
                     let button = $(event.relatedTarget) // Button that triggered the modal
                     let book = button.data('book') // Extract info from data-* attributes
                     let ch_book = items[book];
@@ -52,7 +50,7 @@ window.onload = function(){
                     }
                 })
             })
-            .catch(function(err){
+            .catch((err)=>{
                 console.log("Err: "+err);
                 alertInfo = `<div id = "alert-info" class="alert alert-danger" role="alert">${err}!</div>`;
                 document.getElementById('search-form').insertAdjacentHTML("beforeend", alertInfo);
@@ -70,20 +68,20 @@ function getJSONBooks(url) {
   }
 
 function getBooks(url){
-    return new Promise(function (resolve, reject){
+    return new Promise((resolve, reject)=>{
         const request = new XMLHttpRequest();
         let fields = 'items(saleInfo(retailPrice),volumeInfo(description,title,authors,imageLinks/smallThumbnail))'
         
         request.open('GET', `${url}&fields=${fields}&maxResults=10`)
-        request.onload = function(){
+        request.onload = ()=>{
             if (request.status === 200){
                 resolve(request.response)
             }
             else{
-                reject(new Error(request.statusText))
+                reject(Error(request.statusText))
             }
         }
-        request.onerror = function(){
+        request.onerror = ()=>{
             reject(Error('Network Error'))
         }
         request.send();
