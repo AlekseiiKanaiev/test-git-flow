@@ -1,9 +1,9 @@
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener('DOMContentLoaded', function(){
     
     // var apiKey = "AIzaSyC5mcWMqSMxtaecdQx-wsq6cgoZSKqZd0I"
-    document.getElementById('my-form').addEventListener("submit", function(event){
+    document.getElementById('my-form').addEventListener('submit', function(event){
         event.preventDefault();
-        var query = document.getElementById("book_search").value;
+        var query = document.getElementById('book_search').value;
         var alertInfo = '<div class="alert alert-warning" role="alert">'+
                         'Please, enter name of the book!</div>';
         if (!query){
@@ -42,12 +42,12 @@ document.addEventListener("DOMContentLoaded", function(){
                 if (ch_book){
                     let img = (ch_book.volumeInfo.imageLinks)?
                         `<img src = '${ch_book.volumeInfo.imageLinks.smallThumbnail}' alt = '${ch_book.volumeInfo.title}' >`
-                        :"There is no image";
+                        :'There is no image';
                     let description = (ch_book.volumeInfo.description)?
                         ch_book.volumeInfo.description
-                        :"There is no description";
+                        :'There is no description';
                     document.querySelector('.modal-title').innerHTML = ch_book.volumeInfo.title;
-                    document.querySelector(".modal-body").innerHTML = img+"<br/>"+description;
+                    document.querySelector('.modal-body').innerHTML = img+'<br/>'+description;
                 }
             })
         })
@@ -66,7 +66,7 @@ function getJSONBooks(url) {
 function getBooks(url){
     return new Promise(function (resolve, reject){
         var request = new XMLHttpRequest();
-        var fields = "items(saleInfo(retailPrice),volumeInfo(description,title,authors,imageLinks/smallThumbnail))"
+        var fields = 'items(saleInfo(retailPrice),volumeInfo(description,title,authors,imageLinks/smallThumbnail))'
         
         request.open("GET", `${url}&fields=${fields}&maxResults=10`)
         request.onload = function(){
@@ -74,13 +74,13 @@ function getBooks(url){
                 resolve(request.response)
             }
             else{
-                reject(Error(request.statusText))
+                reject(new Error(request.statusText))
             }
         }
         request.onerror = function(){
-            reject(Error('Network Error'))
+            reject(new Error('Network Error'))
         }
         request.send();
-        console.log("submit");
+        console.log('submit');
     })
 }
