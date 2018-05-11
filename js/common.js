@@ -1,20 +1,18 @@
-document.addEventListener('DOMContentLoaded', function(){
+window.onload = function(){
     
     // var apiKey = "AIzaSyC5mcWMqSMxtaecdQx-wsq6cgoZSKqZd0I"
-    document.getElementById('btn-search').addEventListener('click', function(event){
+    document.getElementById('btn-search').addEventListener('click', function(){
         // event.preventDefault();
-        console.log(event);
-        console.log(1);
+        removeAlert();
         let query = document.getElementById('book_search').value;
-        let alertInfo = '<div class="alert alert-warning" role="alert">'+
+        let alertInfo = '<div id = "alert-info" class="alert alert-warning" role="alert">'+
                         'Please, enter name of the book!</div>';
         if (!query){
-            document.getElementById('search-form').innerHTML += alertInfo;
-            // alert(alertInfo);
+            document.getElementById('search-form').insertAdjacentHTML("beforeend", alertInfo);
             console.log("no query");
-            return -1;
         }
         else{
+            
             console.log(query);
             const url = `https://www.googleapis.com/books/v1/volumes?q=intitle:${query}`;
             getJSONBooks(url).then(function(result){
@@ -24,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function(){
                             '<div class="col-md-4"><h4>Author</h4></div>'+
                             '<div class="col-md-1"><h4>Price</h4></div>'+
                             '<div class="col-md-3"></div></div>';
-                // var i = 0;
                 for (let i = 0; i < items.length; i++){
                     let title = items[i].volumeInfo.title;
                     let authors = (items[i].volumeInfo.authors)? items[i].volumeInfo.authors.join():"None";
@@ -35,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function(){
                                 `<div class="col-md-1">${price}</div>`+
                                 '<div class="col-md-3"><div class="book-info d-flex flex-column justify-content-center align-items-center">'+
                                 `<button class="btn btn-info btn-sm" type="button" data-toggle="modal" data-target="#bookinfo" data-book = "${i}">View details</button></div></div></div>`;
-                    // i++;
                 }   
                 document.getElementById('content').innerHTML = content;
 
@@ -58,12 +54,16 @@ document.addEventListener('DOMContentLoaded', function(){
             })
             .catch(function(err){
                 console.log("Err: "+err);
-                alertInfo = `<div class="alert alert-danger" role="alert">${err}!</div>`;
-                document.getElementById('search-form').innerHTML += alertInfo;
+                alertInfo = `<div id = "alert-info" class="alert alert-danger" role="alert">${err}!</div>`;
+                document.getElementById('search-form').insertAdjacentHTML("beforeend", alertInfo);
             })
         }
     })
-})
+}
+function removeAlert(){
+    if(document.getElementById('alert-info'))
+        document.getElementById('search-form').removeChild(document.getElementById('alert-info'))
+}
 
 function getJSONBooks(url) {
     return getBooks(url).then(JSON.parse);
@@ -84,7 +84,7 @@ function getBooks(url){
             }
         }
         request.onerror = function(){
-            reject(new Error('Network Error'))
+            reject(Error('Network Error'))
         }
         request.send();
         console.log('submit');
